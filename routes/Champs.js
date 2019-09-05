@@ -23,9 +23,16 @@ var connection = mysql.createConnection({
     database: process.env.RDS_DATABASE
 });
 
+
+
 connection.connect(function(err){
     if(err){
-        console.log('Database connection failed'+err);
+        console.log('Database connection failed! '+err);
+        console.log(process.env.RDS_HOSTNAME);
+        console.log(process.env.RDS_USERNAME);
+        console.log(process.env.RDS_PASSWORD);
+        console.log(process.env.RDS_DATABASE);
+        console.log(process.env.RDS_PORT);
         return;
     }
     console.log('Database connection success');
