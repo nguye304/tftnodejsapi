@@ -33,7 +33,7 @@ connection.connect(function(err){
 
 //GET: /api/Items
 //Returns all Items
-router.get('/api/Items',(req,res)=>{
+router.get('/',(req,res)=>{
     connection.query('SELECT * FROM Items',
         function(error,results,fields){
             if(error){
@@ -44,10 +44,21 @@ router.get('/api/Items',(req,res)=>{
         }//function close
     )//connection.query close 
 });
-
+//Returns all Items by id
+router.get('/:id',(req,res)=>{
+    connection.query(`SELECT * FROM Items WHERE ItemKey=${parseInt(req.params.id)}`,
+        function(error,results,fields){
+            if(error){
+                res.send(error);
+                return;
+            }
+            res.send(results);
+        }//function close
+    )//connection.query close 
+});
 //PUT: /api/Items/id
 //Updates a item by their item id
-router.put('/api/Items/:id',(req,res)=>{
+router.put('/:id',(req,res)=>{
     const Item = {
         ItemName:req.body.ItemName,
         ItemStat1:req.body.ItemStat1,
@@ -83,7 +94,7 @@ router.put('/api/Items/:id',(req,res)=>{
 
 //POST: api/Items
 //adds information for a new item
-router.post('/api/Items',(req,res)=>{
+router.post('/',(req,res)=>{
     const Item = {
         ItemName:req.body.ItemName,
         ItemStat1:req.body.ItemStat1,
@@ -109,7 +120,7 @@ router.post('/api/Items',(req,res)=>{
 });
 
 //DELETE api/Items
-router.delete('/api/Items/:id',(req,res)=>{
+router.delete('/:id',(req,res)=>{
     var query = `DELETE FROM Items WHERE ItemKey = ${parseInt(req.params.id)}`;
     connection.query(query,function(err,result){
         if(err){

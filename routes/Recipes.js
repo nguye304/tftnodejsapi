@@ -33,7 +33,7 @@ connection.connect(function(err){
 
 //GET: /api/recipes
 //Returns all ItemRecipes
-router.get('/api/recipes',(req,res)=>{
+router.get('/',(req,res)=>{
     connection.query('SELECT * FROM ItemRecipes',
         function(error,results,fields){
             if(error){
@@ -47,7 +47,7 @@ router.get('/api/recipes',(req,res)=>{
 
 //PUT: /api/recipes/id
 //Updates a recipe by their item name
-router.put('/api/recipes/:reckey',(req,res)=>{
+router.put('/:reckey',(req,res)=>{
     const Recipe = {
         Item1:req.body.Item1,
         Item2:req.body.Item2,
@@ -69,7 +69,7 @@ router.put('/api/recipes/:reckey',(req,res)=>{
 });//router put closing
 
 //POST: api/recipes
-router.post('/api/recipes',(req,res)=>{
+router.post('/',(req,res)=>{
     const Recipe = {
         Item1:req.body.Item1,
         Item2:req.body.Item2,
@@ -89,7 +89,7 @@ router.post('/api/recipes',(req,res)=>{
 });
 
 //DELETE api/recipes
-router.delete('/api/recipes/:id',(req,res)=>{
+router.delete('/:id',(req,res)=>{
     var query = `DELETE FROM ItemRecipes WHERE RecipeKey = ${parseInt(req.params.id)}`;
     connection.query(query,function(err,result){
         if(err){

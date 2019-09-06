@@ -23,38 +23,23 @@ var connection = mysql.createConnection({
     database: process.env.RDS_DATABASE
 });
 
-console.log(process.env.RDS_HOSTNAME);
-        console.log(process.env.RDS_USERNAME);
-        console.log(process.env.RDS_PASSWORD);
-        console.log(process.env.RDS_DATABASE);
-        console.log(process.env.RDS_PORT);
-        console.log(process.env.PORT);
+
 
 connection.connect(function(err){
     if(err){
         console.log('Database connection failed! '+err);
-        console.log(process.env.RDS_HOSTNAME);
-        console.log(process.env.RDS_USERNAME);
-        console.log(process.env.RDS_PASSWORD);
-        console.log(process.env.RDS_DATABASE);
-        console.log(process.env.RDS_PORT);
-        console.log(process.env.PORT);
+    
         return;
     }
         console.log('Database connection success');
-        console.log(process.env.RDS_HOSTNAME);
-        console.log(process.env.RDS_USERNAME);
-        console.log(process.env.RDS_PASSWORD);
-        console.log(process.env.RDS_DATABASE);
-        console.log(process.env.RDS_PORT);
-        console.log(process.env.PORT);
+   
 });
+
 
 //GET: /api/champs
 //Returns all champions
-router.get('/api/champs',(req,res)=>{
-    connection.query('SELECT * FROM Champions',
-        function(error,results,fields){
+router.get('/',(req,res)=>{
+    connection.query('SELECT * FROM Champions',function(error,results,fields){
             if(error){
                 res.send(error);
                 return;
@@ -66,7 +51,7 @@ router.get('/api/champs',(req,res)=>{
 
 //PUT: /api/champs/id
 //Updates a champion by their id
-router.put('/api/champs/id',(req,res)=>{
+router.put('/:id',(req,res)=>{
     const Champion = {
         ChampKey:req.body.ChampKey,
         ChampName:req.body.ChampName,
@@ -103,7 +88,7 @@ router.put('/api/champs/id',(req,res)=>{
 });//router put closing
 
 //POST: api/champs
-router.post('/api/champs',(req,res)=>{
+router.post('/',(req,res)=>{
     const Champion = {
         ChampKey:req.body.ChampKey,
         ChampName:req.body.ChampName,
@@ -131,7 +116,7 @@ router.post('/api/champs',(req,res)=>{
 });
 
 //DELETE api/champs
-router.delete('/api/champs/:id',(req,res)=>{
+router.delete('/:id',(req,res)=>{
     var query = `DELETE FROM Champions WHERE ChampKey = ${parseInt(req.params.id)}`;
     connection.query(query,function(err,result){
         if(err){
