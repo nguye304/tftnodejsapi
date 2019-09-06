@@ -23,7 +23,12 @@ var connection = mysql.createConnection({
     database: process.env.RDS_DATABASE
 });
 
-
+console.log(process.env.RDS_HOSTNAME);
+        console.log(process.env.RDS_USERNAME);
+        console.log(process.env.RDS_PASSWORD);
+        console.log(process.env.RDS_DATABASE);
+        console.log(process.env.RDS_PORT);
+        console.log(process.env.PORT);
 
 connection.connect(function(err){
     if(err){
@@ -37,6 +42,12 @@ connection.connect(function(err){
         return;
     }
     console.log('Database connection success');
+    console.log(process.env.RDS_HOSTNAME);
+        console.log(process.env.RDS_USERNAME);
+        console.log(process.env.RDS_PASSWORD);
+        console.log(process.env.RDS_DATABASE);
+        console.log(process.env.RDS_PORT);
+        console.log(process.env.PORT);
 });
 
 //GET: /api/champs
