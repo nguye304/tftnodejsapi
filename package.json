@@ -4,7 +4,6 @@
   "description": "tft api with express",
   "main": "app.js",
   "scripts": {
-    "test": "npm test",
     "start": "node ./bin/www"
   },
   "author": "kevin nguyen",
