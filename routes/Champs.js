@@ -33,6 +33,7 @@ connection.connect(function(err){
         console.log(process.env.RDS_PASSWORD);
         console.log(process.env.RDS_DATABASE);
         console.log(process.env.RDS_PORT);
+        console.log(process.env.PORT);
         return;
     }
     console.log('Database connection success');
