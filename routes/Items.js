@@ -111,7 +111,7 @@ router.post('/',(req,res)=>{
     }
 
     var query = `INSERT INTO Items(ItemName,ItemStat1,ItemStat2,ItemStat3,Recipe,Stat1Type,Stat2Type,Stat3Type,ItemEffect,ItemImg) 
-                 VALUES('${Item.ItemName}','${Item.ItemStat1}','${Item.ItemStat2},'${Item.ItemStat3}','${Item.Recipe}','${Item.Stat1Type},'${Item.Stat2Type}','${Item.Stat3Type}','${Item.ItemEffect},${Item.ItemImg})`;
+                 VALUES('${Item.ItemName}','${Item.ItemStat1}','${Item.ItemStat2},'${Item.ItemStat3}','${Item.Recipe}','${Item.Stat1Type},'${Item.Stat2Type}','${Item.Stat3Type}','${Item.ItemEffect}','${Item.ItemImg}')`;
 
     connection.query(query, function(err,result){//error handling
                                 if(err){
