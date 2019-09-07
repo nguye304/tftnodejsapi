@@ -90,7 +90,6 @@ router.put('/:id',(req,res)=>{
 //POST: api/champs
 router.post('/',(req,res)=>{
     const Champion = {
-        ChampKey:req.body.ChampKey,
         ChampName:req.body.ChampName,
         ChampHP:req.body.ChampHP,
         ChampAD:req.body.ChampAD,

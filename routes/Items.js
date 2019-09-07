@@ -68,7 +68,8 @@ router.put('/:id',(req,res)=>{
         Stat1Type:req.body.Stat1Type,
         Stat2Type:req.body.Stat2Type,
         Stat3Type:req.body.Stat3Type,
-        ItemEffect:req.body.ItemEffect
+        ItemEffect:req.body.ItemEffect,
+        ItemImg:req.body.ItemImg
     }
     connection.query(`UPDATE Items 
                         SET ItemName ="${Item.ItemName}",
@@ -79,7 +80,8 @@ router.put('/:id',(req,res)=>{
                             Stat1Type ="${Item.Stat1Type}",
                             Stat2Type ="${Item.Stat2Type}",
                             Stat3Type ="${Item.Stat3Type}",
-                            ItemEffect ="${Item.ItemEffect}"
+                            ItemEffect ="${Item.ItemEffect}",
+                            ItemImg="${Item.ItemImg}"
 
                         WHERE ItemKey = "${parseInt(req.params.id)}"`,
 
@@ -104,11 +106,12 @@ router.post('/',(req,res)=>{
         Stat1Type:req.body.Stat1Type,
         Stat2Type:req.body.Stat2Type,
         Stat3Type:req.body.Stat3Type,
-        ItemEffect:req.body.ItemEffect
+        ItemEffect:req.body.ItemEffect,
+        ItemImg:req.body.ItemImg
     }
 
-    var query = `INSERT INTO Items(Item1,Item2,Item3) 
-                 VALUES('${Item.ItemName}','${Item.ItemStat1}','${Item.ItemStat2},'${Item.ItemStat3}','${Item.Recipe}','${Item.Stat1Type},'${Item.Stat2Type}','${Item.Stat3Type}','${Item.ItemEffect})`;
+    var query = `INSERT INTO Items(ItemName,ItemStat1,ItemStat2,ItemStat3,Recipe,Stat1Type,Stat2Type,Stat3Type,ItemEffect,ItemImg) 
+                 VALUES('${Item.ItemName}','${Item.ItemStat1}','${Item.ItemStat2},'${Item.ItemStat3}','${Item.Recipe}','${Item.Stat1Type},'${Item.Stat2Type}','${Item.Stat3Type}','${Item.ItemEffect},${Item.ItemImg})`;
 
     connection.query(query, function(err,result){//error handling
                                 if(err){
